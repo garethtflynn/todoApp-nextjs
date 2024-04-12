@@ -1,8 +1,21 @@
-export function TodoItem({ id, title, complete }) {
-  return <li>
-    <input id={id} type='checkbox' className='cyrsor-pointer peer'/>
-    <label htmlFor={id} className='peer-checked:line-through peer-checked:text-slate-500'>
+"use client";
+
+export function TodoItem({ id, title, complete, toggleTodo }) {
+  return (
+    <li className="flex gap-1 items-center">
+      <input
+        id={id}
+        type="checkbox"
+        className="cursor-pointer peer"
+        defaultChecked={complete}
+        onChange={(e) => toggleTodo(id, e.target.checked)}
+      />
+      <label
+        htmlFor={id}
+        className="peer-checked:line-through peer-checked:text-slate-500"
+      >
         {title}
-    </label>
-  </li>;
+      </label>
+    </li>
+  );
 }
